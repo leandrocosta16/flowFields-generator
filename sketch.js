@@ -16,15 +16,21 @@ let weight;
 let speed;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth, windowHeight + 20);
     background(0);
 
+    numOfParticles = 300;
     red = random(255);
     green = random(255);
     blue = random(255);
     alpha = 255;
     weight = 2;
     speed = 0.3;
+
+    sliderN = createSlider(10, 1500, numOfParticles, 0);
+    sliderN.position(20, height - 330);
+    sliderN.style('width', '150px');
+    sliderN.style('color', '#ff0000');
 
     sliderR = createSlider(0, 255, red, 0);
     sliderR.position(20, height - 290);
@@ -52,6 +58,13 @@ function setup() {
     sliderS.position(20, height - 90);
     sliderS.style('width', '150px');
 
+
+    let partText = createDiv('Number of particles');
+    partText.style('font-size', '10px');
+    partText.style('color', '#FFFFFF');
+    partText.style("font-family", "'Montserrat', sans-serif");
+    partText.style("font-weight", "lighter");
+    partText.position(25, height - 345);
 
     let redText = createDiv('Red');
     redText.style('font-size', '10px');
@@ -130,6 +143,11 @@ function setup() {
 }
 
 function draw() {
+
+    numOfParticles = sliderN.value();
+    sliderN.changed(() => {
+        createArrayOfParticles();
+    });
 
     red = sliderR.value();
     sliderR.changed(() => {
