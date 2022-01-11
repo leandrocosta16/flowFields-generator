@@ -16,7 +16,7 @@ let weight;
 let speed;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight+20);
+    createCanvas(windowWidth, windowHeight);
     background(0);
 
     red = random(255);
@@ -48,7 +48,7 @@ function setup() {
     sliderW.position(20, height - 130);
     sliderW.style('width', '150px');
 
-    sliderS = createSlider(0.1, 1, speed, 0);
+    sliderS = createSlider(0.1, 3, speed, 0);
     sliderS.position(20, height - 90);
     sliderS.style('width', '150px');
 
